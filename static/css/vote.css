@@ -1,0 +1,71 @@
+div.upvote {
+    text-align: center;
+}
+
+div.upvote a.upvote-enabled {
+    cursor: pointer;
+}
+
+div.upvote a {
+    color: transparent;
+    background-image: url('../img/sprites-superuser.png?v=1');
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto;
+    width: 41px;
+    height: 25px;
+}
+
+div.upvote span.count {
+    display: block;
+    font-size: 24px;
+    font-family: Arial, Liberation, Sans, DejaVu Sans, sans-serif;
+    color: #555;
+    text-align: center;
+    line-height: 1;
+}
+
+div.upvote a.upvote {
+    background-position: 0px -265px;
+}
+
+div.upvote a.upvote.upvote-on {
+    background-position: 0px -230px;
+}
+
+div.upvote a.downvote {
+    background-position: 0px -300px;
+}
+
+div.upvote a.downvote.downvote-on {
+    background-position: 0px -330px;
+}
+
+div.upvote a.star {
+    display: none;
+    width: 33px;
+    height: 31px;
+    background-position: 0px -150px;
+}
+
+div.upvote a.star.star-on {
+    background-position: 0px -190px;
+}
+
+.hidden {
+    display: none;
+}
+.examples {
+    overflow: auto;
+}
+.examples div.upvote {
+    float: left;
+}
+#footer {
+    height: 60px;
+    background-color: #f5f5f5;
+}
+.credit {
+    margin: 20px 0;
+}

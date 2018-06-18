@@ -1,0 +1,94 @@
+{% extends "question_list/base.html" %}
+{% load staticfiles %}
+{% block page_title %}{{ question.title }}{% endblock %}
+
+                {% block content %}
+                <!-- Question Column -->
+                <div class="col-md-8">
+                    <div class="card mb-4 border-dark">
+                        <div class="card-body">
+                          <div class="row">
+                              <div class="col-md-2">
+                                  <img class="ml-4 img-circle img-fluid usericon-big" title="{{ question.author.user.username }}"
+                                    {% if question.author.avatar %} src="{{ question.author.avatar.url }}"
+                                    {% else %}
+                                    src="{% static 'img/icon128.svg' %}"
+                                    {% endif %} >
+                              </div>              
+                              <div class="col-md-10">
+                                <p class="question card-title">{{ question.title }}</p>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="examples col-md-2" id="vote1"></div>
+                              <div class="col-md-10">{{ question.text }}</div>
+                            </div>
+                          </div>
+                          <div class="card-footer">
+                          <div class="row">
+                           
+                            <h6 class="ml-4 my-1">Tags:</h6>
+                            <div class="ml-2 text-muted mt-1">
+                              {% for tag in tags %}
+                              <a href="{{ tag.get_absolute_tag_url }}">{{ tag.text }}</a>
+                              {% endfor %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="dropdown-divider"></div>
+                      
+                      <!-- ANSWERS -->
+                      {% for answer in answers %}
+                      <div class="card mb-4 border-dark">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="examples col-md-1" id="vote{{ answer.id }}"></div>
+                              <div class="col-md-2">
+                                  <img class="ml-1 img-circle img-fluid usericon-big" 
+                                  {% if answer.author.avatar %} src="{{ answer.author.avatar.url }}"
+                                  {% else %}
+                                  src="{% static 'img/icon128.svg' %}"
+                                  {% endif %}
+                                  >
+                              </div>              
+                              <div class="col-md-8">
+                                  <p class="card-text">
+                                  {{ answer.text }}
+                                  </p>
+                                  {% if answer.is_correct %}
+                                  <img src="{% static 'img/check.svg' %}" alt="correct" class="checked">
+                                  {% endif %}
+                              </div>
+                            </div>
+                            
+                          </div>
+                          <div class="card-footer">
+                          <div class="row ml-3">
+                            <div class="text-muted">Posted on {{ answer.created }} by </div>
+                            <a class="ml-2" href="#"> {{ answer.author.user.username }} </a>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+
+                          {% if user.is_authenticated %}
+                                {% ifnotequal user question.author.user %}
+                                  <form action="{% url 'question_list:question' %}/{{ question.id }}" method="post" novalidate>
+                                    <h3>Have your own opinion? Share it!</h3>
+                                    {% csrf_token %}
+                                    {{ form }}
+                                    </br>
+                                    <button type="submit" class="btn btn-primary mb-2">Answer!</button>
+                                  </form>
+                                {% else %}
+                                  <h3>You cannot answer to your own question!</h3>
+                                {% endifnotequal %}
+                          {% else %}
+                          
+                            <h3>In order to leave answers, please log in or sign up.</h3>
+                          {% endif %}
+                          
+
+                    </div>
+                {% endblock %}

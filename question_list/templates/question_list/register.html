@@ -1,0 +1,22 @@
+{% extends "question_list/base.html" %}
+{% load staticfiles %}
+{% block page_title %}Sign up{% endblock %}
+
+                {% block content %}
+                <!-- Blog Entries Column -->
+                <div class="col-md-8">
+                    {% if not user.is_authenticated %}
+                    <form action="{% url 'question_list:register' %}" method="post" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ jForm }}
+                          </div>
+                        <button type="submit" class="btn btn-primary mt-2">Sign up!</button>
+                      </form>
+                      {% else %}
+                  <h1>You are already logged in!</h1>
+                  {% endif %}
+                  <!-- end of right column -->
+                </div>
+        
+                {% endblock %}

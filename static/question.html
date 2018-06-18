@@ -1,0 +1,264 @@
+<html>
+    <head>
+        <title>AskA</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/custom.css">
+        <link rel="stylesheet" href="css/vote.css">
+        <script>src="js/jquery-3.2.1.slim.min.js"</script>
+        <script>src="js/popper.min.js"</script>
+        <script>src="js/bootstrap.min.js"</script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" src="js/jQCloud.js"></script>
+        <script type="text/javascript" src="js/tagData.js"></script>
+        <script type="text/javascript" src="js/jquery.upvote.js"></script>
+        <script type="text/javascript" src="js/vote.js"></script>
+      </head>
+    <body>
+        <header>
+            <!-- Fixed navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
+                <div class="container">
+                    <a class="icon" href="index.html">AskA</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <form class="col-lg-5 ml-2 col-xl-6" id="searchForm"> 
+                    <input class="form-control" type="text" placeholder="Search">
+                  </form>
+                  <form action="ask.html" class="ml-1">
+                    <button class="btn btn-primary my-2 my-sm-0 ml-4" type="submit">Ask!</button>
+                  </form> 
+                  <div>
+                      <div class="card float-right flex-row userCard">
+                          <div class="row userProfile">
+                            <img class="ml-4 img-circle img-fluid usericon" src="img/icon128.svg"> 
+                            <h5 class="mt-2 card-title ml-1 text-center">Username</h5>
+                            <a class="ml-3 mt-2" href="settings.html">Settings</a>
+                            <a class="ml-3 mt-2" href="#">Log out</a>
+                          </div>
+                        </div>
+                       <!-- <div class="buttonGroup ml-5 mb-2 ">
+                          <a class="btn btn-primary nav-button" href="login.html">Log in</a>
+                          <a class="btn btn-primary ml-3 nav-button" href="register.html">Sign up</a>
+                        </div> -->
+                  </div>
+                </div>
+              </nav>
+          </header>
+
+
+          <div class="container">
+              <div class="row">
+
+                <!-- Question Column -->
+                <div class="col-md-8">
+                    <div class="card mb-4 border-dark">
+                        <div class="card-body">
+                          <div class="row">
+                              <div class="col-md-2">
+                                  <img class="ml-1 img-circle img-fluid usericon-big" src="img/icon128.svg">                             
+                              </div>              
+                              <div class="col-md-10">
+                                <p class="question card-title">What is the Ultimate Question of Life, the Universe, and Everything?</p>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="examples col-md-2" id="vote1"></div>
+                              <div class="col-md-10">
+
+                                  When asked to produce The Ultimate Question, Deep Thought says that it cannot; 
+                                  however, it can help to design an even more powerful computer that can. This new computer will incorporate 
+                                  living beings into the "computational matrix" and will run for ten million years.
+                                  I'm realy bored with waiting this trash to calculate it. Can anybody help me?                 
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-footer">
+                          <div class="row">
+                           
+                            <h6 class="ml-4 my-1">Tags:</h6>
+                            <div class="ml-2 text-muted mt-1">
+                              <a href="#">computer</a>,
+                              <a href="#">great question</a>,
+                              <a href="#">long time ago...</a>,
+                              <a href="#">destiny</a>
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="dropdown-divider"></div>
+                      
+                      <!-- ANSWERS -->
+                      <div class="card mb-4 border-dark">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="examples col-md-1" id="vote2"></div>
+                              <div class="col-md-2">
+                                  <img class="ml-1 img-circle img-fluid usericon-big" src="img/icon128.svg">
+                                  
+                              </div>              
+                              <div class="col-md-8">
+                                  <p class="card-text">
+                                    well, may be some basic worths like love, life etc?
+                                  </p>
+                                  <!-- <img src="../static/img/check.svg" alt="correct" class="checked"> -->
+                              </div>
+                            </div>
+                            
+                          </div>
+                          <div class="card-footer">
+                          <div class="row ml-3">
+                           Author: 
+                           <a class="ml-2" href="#"> Madoka </a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card mb-4 border-success">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="examples col-md-1" id="vote3"></div>
+                              
+                                <div class="col-md-2">
+                                    <img class="ml-1 img-circle img-fluid usericon-big" src="img/icon128.svg">
+                                    
+                                </div>              
+                                <div class="col-md-8">
+                                  <p class="card-text">
+                                    everything is easier: 42.
+                                  </p>
+                                  <img src="../static/img/check.svg" alt="correct" class="checked">
+                                  
+                                </div>
+                              </div>
+                              
+                            </div>
+                            <div class="card-footer">
+                              <div class="row ml-3">
+                               Author: 
+                             <a class="ml-2" href="#"> Yuki </a>
+                            </div>
+                          </div>
+                        </div>
+                      <div class="dropdown-divider"></div>
+                        
+                      <!-- Answer section -->
+                    <form>
+                      <div class="form-group">
+                       <h3><label for="answerTextArea">Answer this question</label></h3> 
+                        <textarea class="form-control" id="answerTextArea" rows="5" placeholder="Enter your answer here..."></textarea>
+                      </div>
+                    </form>
+                    <div class="alert alert-warning" role="alert">
+                      Please, enter your answer!
+                    </div>
+                    <div class="alert alert-danger" role="alert">
+                        Only registered users can answer questions. 
+                        <a href="login.html">Login</a> or <a href="register.html">sign up.</a>
+                    </div>
+                      <button type="submit" class="btn btn-primary mb-2">Answer</button>
+
+                </div> 
+                <!-- end of right column -->
+        
+
+                
+                <!-- Sidebar Widgets Column -->
+                <div class="col-md-4 right-column">
+        
+                  <!-- 
+                  <div class="card my-4">
+                    <h5 class="card-header">Search</h5>
+                    <div class="card-body">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                          <button class="btn btn-secondary" type="button">Go!</button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>  -->
+        
+                  
+                  <!-- Tags Widget -->
+                  <div class="card my-4">
+                    <h5 class="card-header">Popular Tags</h5>
+                    <div class="card-body">
+                      <!-- <div class="row"> -->
+                        <div class="col-xl-12 col-lg-10 col-md-10" id="tagCloud">
+                            <!-- <div class="" id="tagCloud"></div> -->
+
+                        <!-- </div> -->
+                      </div>
+                    </div>
+                  </div>
+                
+        
+                  <div class="card my-4">
+                    <h5 class="card-header">Top Members</h5>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <ul class="list-unstyled mb-0">
+                            <li>
+                              <a href="#">Asuka</a>
+                            </li>
+                            <li>
+                              <a href="#">Ayanami</a>
+                            </li>
+                            <li>
+                              <a href="#">Madoka</a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="col-lg-6">
+                          <ul class="list-unstyled mb-0">
+                            <li>
+                              <a href="#">Kanade</a>
+                            </li>
+                            <li>
+                              <a href="#">Kyon</a>
+                            </li>
+                            <li>
+                              <a href="#">Yamada</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+
+
+                  <!-- Side Widget 
+                  <div class="card my-4">
+                    <h5 class="card-header">Side Widget</h5>
+                    <div class="card-body">
+                      You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                    </div>
+                  </div>
+                      -->
+                </div>
+        
+              </div>
+              <!-- /.row -->
+        
+            </div>
+            <!-- /.container -->
+
+            </br>
+        </br> </br>
+        
+        
+        <div id="templates" class="hidden">
+          <div class="upvote">
+              <a class="upvote" title="Wow! Thumb up!"></a>
+              <span class="count" title="Total number of votes"></span>
+              <a class="downvote" title="Useless. Completely and undoubtedly."></a>
+              <a class="star" title="Mark as favorite. (Click again to undo)"></a>
+          </div>
+      </div>      
+    </body>
+</html>

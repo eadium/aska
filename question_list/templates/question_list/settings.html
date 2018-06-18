@@ -1,0 +1,94 @@
+{% extends "question_list/base.html" %}
+{% load staticfiles %}
+{% block page_title %}Settings{% endblock %}
+
+                {% block content %}
+                <!-- Blog Entries Column -->
+                <div class="col-md-8">
+                  <!-- <div class="col-md-2">
+  
+                  </div>
+                  <div class="col-md-6"> -->
+
+                      <form action="" method="post" novalidate>
+                    {% csrf_token %}
+
+                      <div class="form-group row">
+                          <label for="login" class="col-sm-2 col-form-label col-form-label-lg">Login</label>
+                          <div class="col-sm-8">
+                            {{ form.username }}
+                            {% if 'user_exists' in result %}
+                            <div class="alert alert-danger mt-3 col-md-6" role="alert">
+                                User exists
+                            </div>
+                            {% endif %}
+                            <!-- <input type="login" class="form-control form-control-lg is-valid" id="login" placeholder="Username"> -->
+                          </div>
+                          <div class="valid-feedback">
+                              Username is OK.
+                          </div>
+                          <div class="invalid-feedback">
+                              Please choose a username.
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+                            <div class="col-sm-8">
+                            {{ form.email }}
+
+                              <!-- <input type="email" class="form-control form-control-lg is-valid is-invalid" id="email" placeholder="username@gmail.com"> -->
+                            {% if 'email_exists' in result %}                              
+                              <div class="alert alert-danger mt-3 col-md-6" role="alert">
+                                  This Email is occupied. Sorry.
+                              </div>
+                            {% endif %}
+                              <div class="invalid-feedback">
+                                  Invalid format.
+                              </div>
+                              <div class="valid-feedback">
+                                  Email is OK.
+                              </div>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group row">
+                          <label for="password" class="col-sm-2 col-form-label col-form-label-lg">Password</label>
+                          <div class="col-sm-8">
+                              {{ form.password }}
+                          </br>
+                              {{ form.password2 }}
+
+
+                            <!-- <input type="password" class="form-control form-control-lg is-valid is-invalid" id="password" placeholder="New password"> -->
+                            {% if 'passwords_do_not_match' in result %}
+                            <div class="alert alert-danger mt-3 col-md-6" role="alert">
+                                Passwords do not match
+                            </div>
+                            {% endif %}
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                            <!-- <label for="avatar" class="col-sm-2 col-form-label col-form-label-lg">Avatar</label> -->
+                            <div class="col-sm-8">
+                              <!-- <img src="../static/img/icon128.svg" class="usericon-big"> -->
+                              <!-- <input type="file" class="custom-file-input is-valid" id="validatedCustomFile"> -->
+                                <div class="valid-feedback">
+                                  File uploaded.
+                                </div>
+                                <div class="invalid-feedback">
+                                  Invalid type of file.
+                                </div>
+                              <!-- <label class="custom-file-label ml-3 mr-3" for="validatedCustomFile">Choose file...</label> -->
+                            </div>
+                          </div>
+                          {% if 'success' in result %}
+                          <div class="alert alert-success col-md-10" role="alert">
+                            Profile was successfully saved!
+                          </div>
+                          {% endif %}
+                        <button type="submit" class="btn btn-primary mb-2">Save</button>
+                      </form>
+                  <!-- </div> -->
+                  <!-- end of right column -->
+                </div>
+                {% endblock %}

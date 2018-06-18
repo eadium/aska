@@ -1,0 +1,191 @@
+#logo {    
+    max-width: 100%;
+    height: auto;
+}
+
+.icon {
+    font-size: 36px; 
+    color: white;
+    height: 60px;
+    width: 140px;
+    line-height: 60px;
+    border-radius: 5%;
+    text-align: center;
+    background-color: #007bff;
+}
+
+.icon:hover {
+    background-color: #0069d9;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+#navbar {
+    background-color: #ffffff;
+    color: #ffffff;
+    height: 70px;
+    /* margin-left: 15%; */
+}
+
+/* #ask-btn {
+    margin-left: 30px;
+    color: #007bff;
+    border-color: #007bff;
+} */
+
+#ask-btn:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+#searchForm {
+    /* float: left; */
+    margin-top: 10px;
+}
+
+#askBtn {
+    margin-top: 10px;
+}
+
+body {
+    padding-top: 100px;
+}
+  
+@media (min-width: 992px) {
+    body {
+        padding-top: 100px;
+    }
+}
+
+.userProfile {
+    height: 50px;
+    color: black;
+}
+
+.userCard {
+    width: 350px;
+    margin-left: 44px;
+}
+
+.usericon {
+    width: 40px;
+    height: 40px;
+}
+
+.usericon-big {
+    width: 80px;
+    height: 80px;
+}
+
+.nav-button {
+    width: 8em;
+}
+
+.generic-button {
+    height: 38px;
+    /* vertical-align: middle; */
+}
+
+.right-column {
+    margin-top: -25px;
+}
+
+.question-link {
+    font-size: 20pt;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.question {
+    font-size: 20pt;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.question-link:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.main-column {
+    /* margin-top: 95px; */
+}
+
+.errorlist {
+    position:relative;
+    padding:.75rem 1.25rem;
+    margin-bottom:1rem;
+    border:1px solid transparent;
+    border-radius:.25rem;
+    border-top-color:#ffe8a1;
+    color:#856404;
+    background-color:#fff3cd;
+    border-color:#ffeeba;
+}
+
+.checked {
+    width: 40px;
+    height: 40px;
+}
+
+/* *****************************************
+                    TAG CLOUD
+********************************************/
+
+#tagCloud {
+    width: 100%;
+    height: 350px;
+    /* border: 1px solid #ccc; */
+    background-color:white;
+    font-family:'Segoe';
+}
+
+div.jqcloud {
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 10px;
+    line-height: normal;
+  }
+  
+  div.jqcloud a {
+    font-size: inherit;
+    text-decoration: none;
+  }
+  
+  div.jqcloud span.w10 { font-size: 550%; }
+  div.jqcloud span.w9 { font-size: 500%; }
+  div.jqcloud span.w8 { font-size: 450%; }
+  div.jqcloud span.w7 { font-size: 400%; }
+  div.jqcloud span.w6 { font-size: 350%; }
+  div.jqcloud span.w5 { font-size: 300%; }
+  div.jqcloud span.w4 { font-size: 250%; }
+  div.jqcloud span.w3 { font-size: 200%; }
+  div.jqcloud span.w2 { font-size: 150%; }
+  div.jqcloud span.w1 { font-size: 100%; }
+  
+  /* colors */
+  
+  div.jqcloud { color: #09f; }
+  div.jqcloud a { color: inherit; }
+  div.jqcloud a:hover { color: #0df; }
+  div.jqcloud a:hover { color: #0cf; }
+  div.jqcloud span.w10 { color: #0cf; }
+  div.jqcloud span.w9 { color: #0cf; }
+  div.jqcloud span.w8 { color: #0cf; }
+  div.jqcloud span.w7 { color: #39d; }
+  div.jqcloud span.w6 { color: #90c5f0; }
+  div.jqcloud span.w5 { color: #90a0dd; }
+  div.jqcloud span.w4 { color: #90c5f0; }
+  div.jqcloud span.w3 { color: #a0ddff; }
+  div.jqcloud span.w2 { color: #99ccee; }
+  div.jqcloud span.w1 { color: #aab5f0; }
+  
+  /* layout */
+  
+  div.jqcloud {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  div.jqcloud span { padding: 0; }

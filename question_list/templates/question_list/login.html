@@ -1,0 +1,34 @@
+{% extends "question_list/base.html" %}
+{% load staticfiles %}
+{% block page_title %}Sign in{% endblock %}
+
+                {% block content %}
+                <!-- Blog Entries Column -->
+                <div class="col-md-8">
+                  {% if login_error %}
+                    <h3>Please log in in or <a href="{% url 'question_list:register' %}">sign up</a> order to ask new questions!</h3>
+                  {% endif %}
+                    <form action="" method="post" >
+                        {% csrf_token %}
+                        <div class="form-group">
+                          <label for="userEmail">Username</label>
+                          {{ form.username }}
+                          <small id="emailHelp" class="form-text text-muted">Enter email assigned to your account.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="userPassword">Password</label>
+                          {{ form.password }}
+                        </div>
+
+                        {% if credentials_mismatch %}
+                        <div class="alert alert-danger mt-3 col-md-6" role="alert">
+                          Invalid email/password combination.
+                        </div>
+                        {% endif %}
+                        <button type="submit" class="btn btn-primary mt-2">Log in!</button>
+                      </form>
+
+                  <!-- end of right column -->
+                </div>
+                {% endblock %}
+        

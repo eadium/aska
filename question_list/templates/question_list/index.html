@@ -1,0 +1,87 @@
+{% extends "question_list/base.html" %}
+{% load staticfiles %}
+
+{% block page_title %}Quetions{% endblock %}
+
+ 
+                <!-- Blog Entries Column -->
+                {% block content %}
+                <div class="col-md-8">
+                  <div class="ml-1 row mx-auto my-auto ">
+                      {% if by_rating %}
+                      <h1 class="my-4">Hot questions</h1>
+                      <a class="btn btn-outline-primary ml-5 generic-button mt-4" href="{% url 'question_list:index' %}">Recent questions</a>
+                      {% else %}
+                      <h1 class="my-4">Recent questions</h1>
+                       <a class="btn btn-outline-primary ml-5 generic-button mt-4" href="{% url 'question_list:index' %}?by_rating=1">Hot questions</a>
+                      {% endif %}
+                  </div>
+
+
+                  {% for question in questions %}
+                  <!-- Blog Post -->
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <div class="row">
+                        <a href="{{ question.get_absolute_url }}" class="card-title question-link ml-3">{{ question.title }}</a>
+                      </div>
+                      <p class="card-text">{{ question.text|truncatewords:50 }}</p>
+                      <div class="row">
+                        <div class="examples ml-2" id="vote{{ question.id }}"></div>
+                        <div class="align-self-center">
+                          <a href="{{ question.get_absolute_url }}" class="btn btn-outline-primary generic-button ml-3">Read More &rarr;</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="row">
+                        <div class="text-muted">Posted on {{ question.created }} by </div>
+                        <a href="#" class="ml-1">{{ question.author.user.username }}</a>
+                        <img class="ml-4 img-circle img-fluid usericon" title="{{ question.author.user.username }}"
+                          {% if question.author.avatar %} src="{{ question.author.avatar.url }}"
+                          {% else %}
+                          src="{% static 'img/icon128.svg' %}"> 
+                          {% endif %}
+                        <h6 class="ml-4 my-1"> Tags:</h6>
+                        <div class="ml-2 text-muted mt-1">
+                          {% for tag in question.tags.all %}
+                          <a href="tag/{{ tag.text }}">{{ tag.text }}</a>
+                          {% endfor %}                       
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+                <!-- CONTENT -->
+
+
+
+                <!-- Pagination -->
+
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    
+                    
+                    <li class="page-item"><a class="page-link" href="{% url 'question_list:index' %}{% if by_rating %}?by_rating=1&{% else %}?{% endif %}page=1">First</a></li>
+                    {% if questions.has_previous %}
+                    <li class="page-item"><a class="page-link" href="{% url 'question_list:index' %}{% if by_rating %}?by_rating=1&{% else %}?{% endif %}page={{ questions.previous_page_number }}">{{ questions.previous_page_number }}</a></li>
+                    {% endif %}  
+                    <li class="page-item active"><a class="page-link" href="#">
+                    {% if page %}
+                      {{ page }}
+                    {% else %}
+                    1
+                    {% endif %}
+                    </a></li>
+                    {% if questions.has_next %}
+                    <li class="page-item"><a class="page-link" href="{% url 'question_list:index' %}{% if by_rating %}?by_rating=1&{% else %}?{% endif %}page={{ questions.next_page_number }}">{{ questions.next_page_number }}</a></li>
+                    {% endif %}  
+                    <li class="page-item"><a class="page-link" href="{% url 'question_list:index' %}{% if by_rating %}?by_rating=1&{% else %}?{% endif %}page={{ questions.paginator.num_pages }}">Last</a></li>
+                    
+                  </ul>
+                </nav>
+                         
+              </div>
+              {% endblock %} 
+              <!-- Sidebar Widgets Column -->
+        
