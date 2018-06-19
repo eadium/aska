@@ -10,13 +10,11 @@ from .models import  *
 from .forms import *
 
 def listing(request):
-
-    question_list = Question.objects.all()
     by_rating = request.GET.get('by_rating')
     if by_rating:
-        queryset = Question.objects.order_by('-rating')
+        queryset = Question.objects.get_hot()
     else:
-        queryset = Question.objects.order_by('-created')
+        queryset = Question.objects.get_new()
     page = request.GET.get('page')
     questions = Paginator(queryset, 3).get_page(page)
     return render(request, 'question_list/index.html', {'questions': questions, 'page': page, 'by_rating': by_rating})
@@ -39,16 +37,16 @@ def question_view(request, question_id):
             new_answer.question = question
             new_answer.author = User.objects.get(user=request.user)
             new_answer = form.save() 
-            return HttpResponseRedirect(reverse('question_list:question', args=(question.id,)))
+            url = '{}#' + 'answer' + str(new_answer.id)
+            return HttpResponseRedirect(url.format(reverse('question_list:question', args=(question.id,))))
         else:
             return render(request, 'question_list/question.html', {'question': question, 'answers': answers, 'tags': tags, 'form': form})
-    
         
     form = AnswerModelForm()
     return render(request, 'question_list/question.html', {'question': question, 'answers': answers, 'tags': tags, 'form': form})
 
 def tag(request, tag):
-    questions = Question.objects.filter(tags__text=tag)
+    questions = Question.objects.get_by_tag(tag)
     paginator = Paginator(questions, 3)
     page = request.GET.get('page')
     questions = paginator.get_page(page)

@@ -7,11 +7,16 @@ function gen(target, cssClass, params) {
 
 $(function() {
         function gen_examples(params) {
-            gen('#vote1', '', params);
-            gen('#vote2', '', params);
-            gen('#vote3', '', params);
-            gen('#vote4', '', params);
-            gen('#vote5', '', params);
+            // gen('#vote1', '', params);
+            // gen('#vote2', '', params);
+            // gen('#vote3', '', params);
+            // gen('#vote4', '', params);
+            // gen('#vote5', '', params);
+            // gen('#vote6', '', params);
+            // gen('#vote7', '', params);
+            // gen('#vote8', '', params);
+            // gen('#vote9', '', params);
+            // gen('#vote10', '', params);
         }
         gen_examples();
         /* var functions = [gen_examples, gen_unix, gen_programmers, gen_serverfault];

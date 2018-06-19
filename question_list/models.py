@@ -17,8 +17,6 @@ class UserManager(models.Manager):
         ouser.user.id = user.id 
         return ouser
 
-
-
 class User(models.Model):
     def __str__(self):
         return self.user.username
@@ -67,6 +65,20 @@ class User(models.Model):
         else:
             return None
 
+
+class QuestionManager(models.Manager):
+    def get_hot(self):
+        queryset = Question.objects.order_by('-rating')
+        return queryset
+
+    def get_new(self):
+        queryset = Question.objects.order_by('-created')
+        return queryset
+
+    def get_by_tag(self, tag):
+        queryset = Question.objects.filter(tags__text=tag)
+        return queryset
+
 class Question(models.Model):
     def __str__(self):
         return self.title
@@ -76,6 +88,7 @@ class Question(models.Model):
     created = models.DateTimeField(default=timezone.now)
     tags = models.ManyToManyField('Tag', related_name='questions')
     rating = models.IntegerField(default=0)
+    objects = QuestionManager()
 
     class Meta:
         ordering = ['-created']
@@ -110,8 +123,6 @@ class Like(models.Model):
     answer = models.ForeignKey('Answer', related_name='likes', on_delete=models.CASCADE)
     is_like = models.BooleanField(default=False)
 
-    # def like(self)
-
 
 class AnswerModelForm(forms.ModelForm):
     class Meta: 
@@ -133,20 +144,6 @@ class AnswerModelForm(forms.ModelForm):
         }
 
 class JRegisterForm(forms.ModelForm):
-    # def clean(self):
-    #     cleaned_data = super(JRegisterForm, self).clean()
-    #     username = cleaned_data.get("username")
-    #     if not username:
-    #         raise ValidationError("Please enter the username!")
-    #     if jUser.objects.filter(username=username).exists():
-    #         raise ValidationError("User exists!")
-    #     password = cleaned_data.get("password")
-    #     email = cleaned_data.get("email")
-    #     if password and email:
-    #         return cleaned_data
-    #     else:
-    #         raise ValidationError("Please fill all the fields!")
-
     class Meta: 
         model = jUser
         fields = ('username', 'password', 'email')
@@ -205,17 +202,6 @@ class AskForm(forms.ModelForm):
             else:
                 question.tags.add(Tag.objects.get(name=tag))
 
-    # def save(self, commit=True):
-    #     stag = super(AskForm, self).save(commit=commit)
-    #     tags_list = self.cleaned_data.get('tags', None)
-    #     if tags_list is not None:
-    #         for tag in tags_list.split(","):
-    #            if not Tag.objects.filter(name=tag).exists():
-    #             question.tags.create(name=tag)
-    #         else:
-    #             question.tags.add(Tag.objects.get(name=tag))
-    #     stag.save()
-    #     return stag
                 
     class Meta:
         model = Question
@@ -227,9 +213,6 @@ class AskForm(forms.ModelForm):
             'text': forms.Textarea(attrs = {
                 'rows': 10, 'cols': 80, 'class': "form-control col-md-10", 'id': "questionBody", 'placeholder': "Type here..."
                 }),
-            # 'tags': forms.TextInput(attrs = {
-            #     'type':"text", 'class':"form-control col-md-10", 'id':"userMail", 'aria-describedby':"emailHelp", 'placeholder':"Enter tags divided by comma"
-            #     }),
         }
         labels = { 
             'title': ('Title'),

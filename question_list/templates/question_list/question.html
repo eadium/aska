@@ -9,7 +9,7 @@
                         <div class="card-body">
                           <div class="row">
                               <div class="col-md-2">
-                                  <img class="ml-4 img-circle img-fluid usericon-big" title="{{ question.author.user.username }}"
+                                  <img class="ml-4 img-circle img-fluid usericon-big rounded" title="{{ question.author.user.username }}"
                                     {% if question.author.avatar %} src="{{ question.author.avatar.url }}"
                                     {% else %}
                                     src="{% static 'img/icon128.svg' %}"
@@ -40,12 +40,12 @@
                       
                       <!-- ANSWERS -->
                       {% for answer in answers %}
-                      <div class="card mb-4 border-dark">
+                      <div class="card mb-4 border-dark" id="answer{{ answer.id }}">
                         <div class="card-body">
                           <div class="row">
                             <div class="examples col-md-1" id="vote{{ answer.id }}"></div>
                               <div class="col-md-2">
-                                  <img class="ml-1 img-circle img-fluid usericon-big" 
+                                  <img class="ml-1 img-circle img-fluid usericon-big rounded" 
                                   {% if answer.author.avatar %} src="{{ answer.author.avatar.url }}"
                                   {% else %}
                                   src="{% static 'img/icon128.svg' %}"

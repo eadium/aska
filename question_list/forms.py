@@ -1,5 +1,5 @@
-from django import forms
 from .models import User, Question, Answer, Tag 
+from django import forms
 
 class AnswerForm(forms.Form):
     answer = forms.CharField(widget=forms.Textarea(attrs=

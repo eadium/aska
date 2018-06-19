@@ -22,9 +22,9 @@
                       <div class="card float-right flex-row userCard">
                         <div class="row userProfile">
                           {% if user.profile.avatar %}
-                          <img class="ml-4 img-circle img-fluid usericon" src="{{ user.profile.avatar.url }}"> 
+                          <img class="ml-4 img-circle img-fluid usericon rounded-circle mt-1" src="{{ user.profile.avatar.url }}"> 
                           {% else %}
-                          <img class="ml-4 img-circle img-fluid usericon" src="{% static 'img/icon128.svg' %}"> 
+                          <img class="ml-4 img-circle img-fluid usericon rounded-circle" src="{% static 'img/icon128.svg' %}"> 
                           {% endif %}
                           <h5 class="mt-2 card-title ml-1 text-center">{{ user.username }}</h5>
                           <a class="ml-3 mt-2" href="{% url 'question_list:settings' %}">Settings</a>
@@ -114,6 +114,14 @@
         </br> </br>
         
         <head>
+            <script>
+                function gen(target, cssClass, params) {
+                    var obj = $('#templates .upvote').clone();
+                    obj.addClass(cssClass);
+                    $(target).append(obj);
+                    return obj.upvote(params);
+                }
+            </script>
             <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
             <title>AskA | {% block page_title %}{% endblock %}</title>
             <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
