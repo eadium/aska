@@ -26,10 +26,14 @@ def question_view(request, question_id):
     answers = question.answers.all()
     tags = question.tags.all()
     if request.method == 'POST':
+        correct = request.GET.get('correct')
+        if correct:
+            answer = question.answers.get(id=correct)
+            answer.is_correct = True;
+            answer.save()
+            form = AnswerModelForm()
+            return render(request, 'question_list/question.html', {'question': question, 'answers': answers, 'tags': tags, 'form': form})
         form = AnswerModelForm(request.POST)
-        # form.is_valid()
-        # new_answer = form.save(commit=False)
-        
         if form.is_valid():
             new_answer = form.save(commit=False) 
             new_answer.question = question
@@ -38,6 +42,8 @@ def question_view(request, question_id):
             return HttpResponseRedirect(reverse('question_list:question', args=(question.id,)))
         else:
             return render(request, 'question_list/question.html', {'question': question, 'answers': answers, 'tags': tags, 'form': form})
+    
+        
     form = AnswerModelForm()
     return render(request, 'question_list/question.html', {'question': question, 'answers': answers, 'tags': tags, 'form': form})
 

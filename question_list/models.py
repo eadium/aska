@@ -1,13 +1,13 @@
-from django.db import models
-from django.forms import ModelForm
 from django.contrib.auth.models import User as jUser
-from django import urls
-from django import forms
-from django.utils import timezone
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import UserManager
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.contrib.auth.models import UserManager
+from django.forms import ModelForm
+from django.utils import timezone
+from django.db import models
+from django import forms
+from django import urls
 
 # Create your models here.
     

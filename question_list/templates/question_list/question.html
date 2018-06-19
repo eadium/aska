@@ -14,7 +14,7 @@
                                     {% else %}
                                     src="{% static 'img/icon128.svg' %}"
                                     {% endif %} >
-                              </div>              
+                              </div>
                               <div class="col-md-10">
                                 <p class="question card-title">{{ question.title }}</p>
                               </div>
@@ -67,6 +67,13 @@
                           <div class="row ml-3">
                             <div class="text-muted">Posted on {{ answer.created }} by </div>
                             <a class="ml-2" href="#"> {{ answer.author.user.username }} </a>
+                            {% ifequal user question.author.user %}
+                            <form action="{% url 'question_list:question' %}/{{ question.id }}?correct={{ answer.id }}" method="post" >
+                              {% csrf_token %}
+                              <input type="image" class="usericon ml-4" src={% static 'img/correct.png' %} alt="Submit">
+                            </form>
+                            {% endifequal %}
+                          
                           </div>
                         </div>
                       </div>

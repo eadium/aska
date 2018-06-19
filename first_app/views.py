@@ -5,7 +5,7 @@ from .models import Question, Choice
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
-
+from django.utils import six 
 
 # def index(request):
 #     return HttpResponse("Hello, world. You're at the first_app index.")
@@ -50,3 +50,11 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('first_app:results', args=(question.id,)))
+
+def hello_world(request):
+    # print(request.GET)
+    get_dict = dict(six.iterlists(request.GET))
+    post_dict = dict(six.iterlists(request.POST))
+    print(get_dict)
+    print(post_dict)
+    return render(request, 'first_app/helloworld.html', get_dict)
