@@ -15,4 +15,6 @@ urlpatterns = [
     path('tag', views.tag, name='tag'),
     path('question/<int:question_id>', views.question_view, name='question'),
     path('question', views.question_view, name='question'),
+    path('fake', views.fake, name='fake'),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

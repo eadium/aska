@@ -21,7 +21,7 @@ class User(models.Model):
     def __str__(self):
         return self.user.username
     user = models.OneToOneField(jUser, related_name='profile', on_delete=models.CASCADE)
-    avatar = models.FileField(upload_to='users_avatars', blank=True)
+    avatar = models.ImageField(upload_to='users_avatars', blank=True)
     rating = models.IntegerField(default=0)
     objects = UserManager()
 
@@ -91,7 +91,7 @@ class Question(models.Model):
     objects = QuestionManager()
 
     class Meta:
-        ordering = ['-created']
+        ordering = ['created']
 
     def get_absolute_url(self):
         return "/question/%i" % self.id

@@ -23,3 +23,4 @@ urlpatterns = [
     path('', include('question_list.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

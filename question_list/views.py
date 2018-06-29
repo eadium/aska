@@ -3,11 +3,21 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User as jUser
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views import generic
 from django.urls import reverse
 from .models import  *
 from .forms import *
+from django_dynamic_fixture import G, get, F, fixture
+
+def fake(request):
+    # for i in range (0, 1):
+        # u = G(User)
+        # q = G(Question)
+        # for k in range (0, 3):
+            # a = G(Answer, question=F(q.id))
+
+    return HttpResponse("faked!")
 
 def listing(request):
     by_rating = request.GET.get('by_rating')
@@ -146,3 +156,5 @@ def settings(request):
         return render(request, 'question_list/settings.html', {'form': form, 'result': result})
 
     return render(request, 'question_list/settings.html', {'form': form})
+
+
