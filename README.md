@@ -6,7 +6,7 @@ Simple ask&answer project (like Stackoverflow).
 
 ```bash
 sudo docker build -t aska https://github.com/eadium/aska.git
-sudo docker run -p 8000:8000 -t aska
+sudo docker run -p 8000:8000 aska
 ```
 
 By default the port is 8000.
